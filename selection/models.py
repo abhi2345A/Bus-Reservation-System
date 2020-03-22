@@ -31,8 +31,8 @@ class Student(models.Model):
         null=True)
     room_allotted = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.enrollment_no
+    #def __str__(self):
+    #    return self.enrollment_no
 
 
 class Room(models.Model):

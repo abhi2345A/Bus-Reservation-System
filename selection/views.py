@@ -108,8 +108,6 @@ def select(request):
         room_id_old = request.user.student.room_id
 
     if request.method == 'POST':
-        #if not request.user.student.no_dues:
-        #    return HttpResponse('You have dues. Please contact your Hostel Caretaker or Warden')
         form = SelectionForm(request.POST, instance=request.user.student)
         if form.is_valid():
             if request.user.student.room_id:
@@ -135,28 +133,15 @@ def select(request):
             form.save()
             student = request.user.student
             return render(request, 'profile.html', {'student': student})
+        else:
+            return HttpResponse('This Seat is Already Alloted to somebody')
     else:
         form = SelectionForm(instance=request.user.student)
         student_gender = request.user.student.gender
-        #student_course = request.user.student.course
-        #student_room_type = request.user.student.course.room_type
-        #hostel = Hostel.objects.filter(
-        #    gender=student_gender, course=student_course)
-        x = Room.objects.none()
-        if student_room_type == 'B':
-            for i in range(len(hostel)):
-                h_id = hostel[i].id
-                a = Room.objects.filter(
-                    hostel_id=h_id, room_type=['S', 'D'], vacant=True)
-                x = x | a
-        else :
-            for i in range(len(hostel)):
-                h_id = hostel[i].id
-                a = Room.objects.filter(
-                    hostel_id=h_id, room_type=student_room_type, vacant=True)
-                x = x | a
-        form.fields["room"].queryset = x
+        x = Room.objects.none()       
+        #form.fields["room"].queryset = x
         return render(request, 'select_room.html', {'form': form})
+        #return HttpResponse('Yes')
 
 
 

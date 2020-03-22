@@ -47,16 +47,6 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="row">
-                <div class="cell">
-                    Dues
-                </div>
-                <div class="cell">
-                    {% if student.no_dues %} <div style="color: green">No Dues</div>
-                    {% else %} <div style="color: red">Unpaid Dues</div>
-                    {% endif %}
-                </div>
-            </div>
         </div>
         <a class="button-custom" href="{% url 'select' %}">
             Select a Room
