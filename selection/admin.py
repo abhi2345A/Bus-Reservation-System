@@ -1,17 +1,18 @@
 from django.contrib import admin
-from .models import Student, Room, User, Warden
+from .models import Passenger, Room, User, Warden
 
 
-@admin.register(Student)
-class StudentAdmin(admin.ModelAdmin):
+@admin.register(Passenger)
+class PassengerAdmin(admin.ModelAdmin):
     list_display = [
         'user',
-        'student_name',
-        'father_name',
-        'gender',
+        'passenger_name',
+        'journeyfrom',
+        'journeyto',
         'dob',
-        'room',
-        'room_allotted']
+        'gender',
+        'seat',
+        'seat_allotted']
 
 
 @admin.register(Room)

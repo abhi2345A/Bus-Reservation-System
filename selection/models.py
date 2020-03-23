@@ -6,15 +6,16 @@ class User(AbstractUser):
     is_warden = models.BooleanField(default=False)
 
 
-class Student(models.Model):
+class Passenger(models.Model):
     user = models.OneToOneField(
         User,
         default=None,
         null=True,
         on_delete=models.CASCADE)
     gender_choices = [('M', 'Male'), ('F', 'Female')]
-    student_name = models.CharField(max_length=200, null=True)
-    father_name = models.CharField(max_length=200, null=True)
+    passenger_name = models.CharField(max_length=200, null=True)
+    journeyfrom = models.CharField(max_length=200, null=True)
+    journeyto = models.CharField(max_length=200, null=True)
     dob = models.DateField(
         max_length=10,
         help_text="format : YYYY-MM-DD",
@@ -24,22 +25,23 @@ class Student(models.Model):
         max_length=1,
         default=None,
         null=True)
-    room = models.OneToOneField(
+    seat = models.OneToOneField(
         'Room',
         blank=True,
         on_delete=models.CASCADE,
         null=True)
-    room_allotted = models.BooleanField(default=False)
+    seat_allotted = models.BooleanField(default=False)
 
     #def __str__(self):
     #    return self.enrollment_no
 
 
 class Room(models.Model):
-    room_choice = [('S', 'Single Occupancy'), ('D', 'Double Occupancy'), ('P', 'Reserved for Research Scholars'),('B', 'Both Single and Double Occupancy')]
+    #user=models.ForeignKey(User,on_delete=models.CASCADE,related_name="room_details")
+    room_choice = [('Window Seat', 'Window Seat'), ('Middle Seat', 'Middle Seat'), ('Inner Seat', 'Inner Seat')]
     no = models.CharField(max_length=5)
     name = models.CharField(max_length=10)
-    room_type = models.CharField(choices=room_choice, max_length=1, default=None)
+    room_type = models.CharField(choices=room_choice, max_length=30, default=None)
     vacant = models.BooleanField(default=False)
 
     def __str__(self):

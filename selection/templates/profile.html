@@ -10,43 +10,57 @@
                     Name
                 </div>
                 <div class="cell">
-                    {{ student.student_name }}
+                    {{ passenger.passenger_name }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="cell">
+                    Journey_from
+                </div>
+                <div class="cell">
+                    {{ passenger.journeyfrom }}
                 </div>
             </div>
             <div class="row">
                 <div class="cell">
-                    Father's Name
+                    Journey_to
                 </div>
                 <div class="cell">
-                    {{ student.father_name }}
+                    {{ passenger.journeyto }}
                 </div>
             </div>
+
             <div class="row">
                 <div class="cell">
                     Date of birth (yyyy-mm-dd)
                 </div>
                 <div class="cell">
-                    {{ student.dob }}
+                    {{ passenger.dob }}
                 </div>
             </div>
+
             <div class="row">
                 <div class="cell">
                     Gender
                 </div>
                 <div class="cell">
-                    {{ student.gender }}
+                    {{ passenger.gender }}
                 </div>
             </div>
+
             <div class="row">
                 <div class="cell">
-                    Room
+                    Seat
                 </div>
                 <div class="cell">
-                    {% if student.room_allotted %} {{ student.room }} in {{ student.room.hostel }}
+                    {% if  passenger.seat_allotted %} {{ passenger.seat }} in {{  passenger.seat.hostel }}
                     {% else %} Not Allotted
                     {% endif %}
                 </div>
             </div>
+
+
         </div>
         <a class="button-custom" href="{% url 'select' %}">
             Select a Seat
@@ -57,8 +71,14 @@
 
 
 {% block more_links %}
+<a href="{% url 'ShowopenSeats' %}">
+            Open Tickets</a>
+<a href="{% url 'ShowClosedSeats' %}">
+            Closed Tickets</a>
+<a href="{% url 'Showtable' %}">
+            See Other Passengers Details</a>
     <a href="{% url 'edit' %}">
-            Update Details
+            Update Your Details
         </a>
         <a href="{% url 'select' %}">
             Select a Seat

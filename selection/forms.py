@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from .models import Student, User
+from .models import Passenger, User
 from django import forms
 
 
@@ -19,16 +19,17 @@ class LoginForm(forms.Form):
 
 class RegistrationForm(forms.ModelForm):
     class Meta:
-        model = Student
+        model = Passenger
         fields = [
-            'student_name',
-            'father_name',
+            'passenger_name',
+            'journeyfrom',
+            'journeyto',
             'dob',
             'gender']
 
 
 class SelectionForm(forms.ModelForm):
     class Meta:
-        model = Student
-        fields = ['room']
+        model = Passenger
+        fields = ['seat']
 

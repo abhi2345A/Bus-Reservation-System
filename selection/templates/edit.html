@@ -5,8 +5,9 @@
 <div class="wrap">
     <form action="" method="post">
         {% csrf_token %}
-      <div class="fields"> Student Name <br><br> {{ form.student_name }}</div>
-      <div class="fields"> Father's Name <br><br> {{ form.father_name }}</div>
+      <div class="fields"> Passenger Name <br><br> {{ form.passenger_name }}</div>
+      <div class="fields"> Journeyfrom <br><br> {{ form.journeyfrom }}</div>
+      <div class="fields"> Journeyto <br><br> {{ form.journeyto }}</div>
       <div class="fields"> Date of birth (yyyy-mm-dd) <br><br> {{ form.dob }}</div>
       <div class="fields"> Gender {{ form.gender }}</div>
       <input class="button-custom" type="submit" value="DONE">
@@ -16,8 +17,15 @@
 
 
 {% block more_links %}
+<a href="{% url 'ShowopenSeats' %}">
+            Open Tickets</a>
+<a href="{% url 'ShowClosedSeats' %}">
+            Closed Tickets</a>
+<a href="{% url 'Showtable' %}">
+            See Other Passengers Details
+        </a>
     <a href="{% url 'edit' %}">
-            Update Details
+            Update Your Details
         </a>
         <a href="{% url 'select' %}">
             Select a Room

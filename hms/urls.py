@@ -4,6 +4,9 @@ from selection import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('closedseats/',views.ShowClosedSeats,name='ShowClosedSeats'),
+    path('openseats/',views.ShowopenSeats,name='ShowopenSeats'),
+    path('display/',views.Showtable,name='Showtable'),
     path('', views.home, name='register'),
     path('reg_form/', views.register, name='reg_form'),
     path('login/', views.user_login, name='login'),

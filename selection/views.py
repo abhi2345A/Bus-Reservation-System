@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UserForm, RegistrationForm, LoginForm, SelectionForm
 from django.http import HttpResponse, Http404
-from selection.models import Student, Room
+from selection.models import Passenger, Room
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -10,13 +10,28 @@ def home(request):
     return render(request, 'home.html')
 
 
+@login_required
+def Showtable(request):
+    query_results = Passenger.objects.all()
+    return render(request,'display.html',{'query_results': query_results})
+
+@login_required
+def ShowopenSeats(request):
+    qr = Room.objects.all()
+    return render(request,'openseats.html',{'qr':qr})
+
+@login_required
+def ShowClosedSeats(request):
+    qr1 = Room.objects.all()
+    return render(request,'closedseats.html',{'qr1':qr1})
+
 def register(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
             new_user = form.save(commit=False)
             new_user.save()
-            Student.objects.create(user=new_user)
+            Passenger.objects.create(user=new_user)
             cd = form.cleaned_data
             user = authenticate(
                 request,
@@ -50,12 +65,14 @@ def user_login(request):
                     return HttpResponse('Invalid Login')
                 if user.is_active:
                     login(request, user)
-                    student = request.user.student
-                    return render(request, 'profile.html', {'student': student})
+                    passenger = request.user.passenger
+                    return render(request, 'profile.html', {'passenger': passenger})
                 else:
                     return HttpResponse('Disabled account')
             else:
                 return HttpResponse('Invalid Login')
+        else:
+            return HttpResponse('Sahi Nahi hai bhai')
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
@@ -90,65 +107,58 @@ def warden_login(request):
 @login_required
 def edit(request):
     if request.method == 'POST':
-        form = RegistrationForm(data=request.POST, instance=request.user.student)
+        form = RegistrationForm(data=request.POST, instance=request.user.passenger)
         if form.is_valid():
             form.save()
-            student = request.user.student
-            return render(request, 'profile.html', {'student': student})
+            passenger = request.user.passenger
+            return render(request, 'profile.html', {'passenger': passenger})
         else:
             return HttpResponse(form.errors)
     else:
-        form = RegistrationForm(instance=request.user.student)
+        form = RegistrationForm(instance=request.user.passenger)
         return render(request, 'edit.html', {'form': form})
 
 
 @login_required
 def select(request):
-    if request.user.student.room:
-        room_id_old = request.user.student.room_id
+    if request.user.passenger.seat:
+        seat_id_old = request.user.passenger.seat_id
 
     if request.method == 'POST':
-        form = SelectionForm(request.POST, instance=request.user.student)
+        form = SelectionForm(request.POST, instance=request.user.passenger)
         if form.is_valid():
-            if request.user.student.room_id:
-                request.user.student.room_allotted = True
-                r_id_after = request.user.student.room_id
-                room = Room.objects.get(id=r_id_after)
-                room.vacant = False
-                room.save()
+            if request.user.passenger.seat_id:
+                request.user.passenger.seat_allotted = True
+                r_id_after = request.user.passenger.seat_id
+                seat = Room.objects.get(id=r_id_after)
+                seat.vacant = False
+                seat.save()
                 try:
-                    room = Room.objects.get(id=room_id_old)
-                    room.vacant = True
-                    room.save()
+                    seat = Room.objects.get(id=seat_id_old)
+                    seat.vacant = True
+                    seat.save()
                 except BaseException:
                     pass
             else:
-                request.user.student.room_allotted = False
+                request.user.passenger.seat_allotted = False
                 try:
-                    room = Room.objects.get(id=room_id_old)
-                    room.vacant = True
-                    room.save()
+                    seat = Room.objects.get(id=seat_id_old)
+                    seat.vacant = True
+                    seat.save()
                 except BaseException:
                     pass
             form.save()
-            student = request.user.student
-            return render(request, 'profile.html', {'student': student})
+            passenger = request.user.passenger
+            return render(request, 'profile.html', {'passenger': passenger})
         else:
             return HttpResponse('This Seat is Already Alloted to somebody')
     else:
-        form = SelectionForm(instance=request.user.student)
-        student_gender = request.user.student.gender
+        form = SelectionForm(instance=request.user.passenger)
+        passenger_gender = request.user.passenger.gender
         x = Room.objects.none()       
         #form.fields["room"].queryset = x
         return render(request, 'select_room.html', {'form': form})
         #return HttpResponse('Yes')
-
-
-
-
-
-
-
 
 
 def logout_view(request):

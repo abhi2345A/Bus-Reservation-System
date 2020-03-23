@@ -1,0 +1,60 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 80%;
+   margin-left: auto;
+    margin-right: auto;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(odd){background-color: #e6ffff}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body bgcolor="#669999">
+
+<table>
+  <tr>
+    <th>S.No</th>
+    <th>Passenger_Name</th>
+    <th>Journeyfrom</th>
+    <th>Journeyto</th>
+    <th>DOB</th>
+    <th>Gender</th>
+    <th>Seat</th>
+    <th>Seat_Alotted</th>
+  </tr>
+  </tr>
+    {% for item in query_results %}
+    <tr> 
+        <td> {{ forloop.counter }} </td>
+        <td>{{ item.passenger_name }}</td>
+        <td>{{ item.journeyfrom }}</td>
+        <td>{{ item.journeyto }}</td>
+        <td>{{ item.dob }}</td>
+        <td>{{ item.gender }}</td>
+        <td>{{ item.seat }}</td>
+        <td> {% if item.seat_allotted %} Alotted
+            {% else %} Not Allotted
+                    {% endif %}
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
