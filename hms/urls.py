@@ -4,8 +4,11 @@ from selection import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', views.home,name='home'),
     path('closedseats/',views.ShowClosedSeats,name='ShowClosedSeats'),
+    path('admin/resetdetails/',views.reset,name='reset'),
     path('openseats/',views.ShowopenSeats,name='ShowopenSeats'),
+    path('admin/resetdetails/clear/',views.Clear,name='Clear'),
     path('display/',views.Showtable,name='Showtable'),
     path('', views.home, name='register'),
     path('reg_form/', views.register, name='reg_form'),
@@ -17,4 +20,4 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('reg_form/login/edit/', views.edit, name='update'),
     path('BH5_Floor4/', views.BH5_Floor4, name='BH5_Floor4'),
-]
+]   

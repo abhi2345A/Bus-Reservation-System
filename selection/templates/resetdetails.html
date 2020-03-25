@@ -1,0 +1,138 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+  position:absolute;
+    bottom: 3%;
+    right:90%;
+  display: inline-block;
+  padding: 15px 2px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #33cccc;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button1 {
+  position:absolute;
+    bottom: 3%;
+    right:0%;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #33cccc;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+
+
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+   margin-left: auto;
+    margin-right: auto;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(odd){background-color: #e6ffff}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body bgcolor="#669999">
+
+<table>
+  <tr>
+    <th>S.No</th>
+    <th>Passenger_Name</th>
+    <th>Journeyfrom</th>
+    <th>Journeyto</th>
+    <th>DOB</th>
+    <th>Gender</th>
+    <th>Seat</th>
+    <th>Seat_Alotted</th>
+  </tr>
+  </tr>
+    {% for item in p %}
+    <tr> 
+        <td> {{ forloop.counter }} </td>
+        <td>{{ item.passenger_name }}</td>
+        <td>{{ item.journeyfrom }}</td>
+        <td>{{ item.journeyto }}</td>
+        <td>{{ item.dob }}</td>
+        <td>{{ item.gender }}</td>
+        <td>{{ item.seat }}</td>
+        <td> {% if item.seat_allotted %} Alotted
+            {% else %} Not Allotted
+                    {% endif %}
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br></br>
+
+
+<table>
+  <tr>
+    <th>S.No</th>
+    <th>Room No</th>
+    <th>Room Type</th>
+    <th>Vacancy</th>
+  </tr>
+  </tr>
+    {% for item in r %}
+    <tr> 
+        <td> {{ forloop.counter }} </td>
+        <td>{{ item.no }}</td>
+        <td>{{ item.room_type }}</td>
+        <td> {% if item.vacant %} Vacant
+            {% else %} Not Vacant
+                    {% endif %}
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+<a href="{% url 'Clear' %}" class="button">Reset Tickets</a>
+<a href="{% url 'home' %}" class="button1">Home</a>
+
+
+</body>
+</html>

@@ -5,11 +5,11 @@
 <div class="wrap">
     <form action="" method="post">
         {% csrf_token %}
-      <div class="fields"> Passenger Name <br><br> {{ form.passenger_name }}</div>
-      <div class="fields"> Journeyfrom <br><br> {{ form.journeyfrom }}</div>
-      <div class="fields"> Journeyto <br><br> {{ form.journeyto }}</div>
-      <div class="fields"> Date of birth (yyyy-mm-dd) <br><br> {{ form.dob }}</div>
-      <div class="fields"> Gender {{ form.gender }}</div>
+      <div class="fields"><h3><b style="font-family:Inconsolata;"> Passenger Name</b></h3> {{ form.passenger_name }}</div>
+      <div class="fields"> <h3><b style="font-family:Inconsolata;"> Journey From</b></h3> {{ form.journeyfrom }}</div>
+      <div class="fields"><h3><b style="font-family:Inconsolata;"> Journey To</b></h3>{{ form.journeyto }}</div>
+      <div class="fields"><h3><b style="font-family:Inconsolata;"> Date of birth (yyyy-mm-dd)</b></h3>{{ form.dob }}</div>
+      <div class="fields"> <h3><b style="font-family:Inconsolata;"> Gender</b></h3>{{ form.gender }}</div>
       <input class="button-custom" type="submit" value="DONE">
     </form>
   </div>
@@ -28,7 +28,7 @@
             Update Your Details
         </a>
         <a href="{% url 'select' %}">
-            Select a Room
+            Select a Seat
         </a>
         <a href="{% url 'logout' %}">
             Logout

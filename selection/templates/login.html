@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% for message in messages %}
+                    <div class="alert alert-success"><a  class="close" href="" data-dismiss="alert">×</a><center><font color="steelblue"> <h2> {{ message }} </h2></font></center></div>
+            {% endfor %}
+
 <div class="wrap">
     <form action="" method="post">
         {% csrf_token %}
-      <div class="fields"> Username <br><br> {{ form.username }}</div>
-      <div class="fields"> Password <br><br> {{ form.password }}</div>
+      <div class="fields"><h2><b style="font-family:Inconsolata;"> Username</b></h2>  {{ form.username }}</div>
+      <div class="fields"><h2><b style="font-family:Inconsolata;"> Password </b></h2> {{ form.password }}</div>
       <input class="button-custom" type="submit" value="LOGIN">
     </form>
   </div>

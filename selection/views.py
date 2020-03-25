@@ -4,11 +4,34 @@ from django.http import HttpResponse, Http404
 from selection.models import Passenger, Room
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 
 def home(request):
     return render(request, 'home.html')
 
+@login_required
+def reset(request):
+    r = Room.objects.all()
+    p = Passenger.objects.all()
+    return render(request,'resetdetails.html',{'r': r,'p':p})
+
+@login_required
+def Clear(request):
+    if request.method =='GET':
+        default = True
+        for room in Room.objects.all():
+            room.vacant = default
+            room.save()
+        for passenger in Passenger.objects.all():
+            passenger.seat = None
+            passenger.seat_allotted = False
+            passenger.save()
+
+        #return render(request,'resetdetails',{'r1':r1,'p1':p1})
+    messages.info(request, 'All Bus Tickets have been reset(Opened) successfully!')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 @login_required
 def Showtable(request):
@@ -45,6 +68,9 @@ def register(request):
                     return HttpResponse('Disabled account')
             else:
                 return HttpResponse('Invalid Login')
+        else:
+            messages.error(request,"Something Went Wrong!...Try Again")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         form = UserForm()
         args = {'form': form}
@@ -61,8 +87,6 @@ def user_login(request):
                 username=cd['username'],
                 password=cd['password'])
             if user is not None:
-                if user.is_warden:
-                    return HttpResponse('Invalid Login')
                 if user.is_active:
                     login(request, user)
                     passenger = request.user.passenger
@@ -70,9 +94,11 @@ def user_login(request):
                 else:
                     return HttpResponse('Disabled account')
             else:
-                return HttpResponse('Invalid Login')
+                messages.error(request,"Invalid username or password!...Try Again ")
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
-            return HttpResponse('Sahi Nahi hai bhai')
+            messages.error(request,"Invalid username or password!...Try Again ")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
@@ -151,7 +177,8 @@ def select(request):
             passenger = request.user.passenger
             return render(request, 'profile.html', {'passenger': passenger})
         else:
-            return HttpResponse('This Seat is Already Alloted to somebody')
+            messages.error(request,"This Seat Ticket is Closed!...Try different one")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         form = SelectionForm(instance=request.user.passenger)
         passenger_gender = request.user.passenger.gender

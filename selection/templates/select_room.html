@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% for message in messages %}
+                    <div class="alert alert-success"><a  class="close" href="" data-dismiss="alert">×</a><center><font color="steelblue"> <h2> {{ message }} </h2></font></center></div>
+            {% endfor %}
+
 <div class="wrap">
     <form action="" method="post">
         {% csrf_token %}
-      <div class="fields">{{ form.as_p }}</div>
+    <H3>To See a Seat Layout click on Status</H3>
+      <div class="field">{{ form.as_p }}</div>
       <input class="button-custom" type="submit" value="UPDATE">
     </form>
   </div>
@@ -12,8 +17,15 @@
 
 
 {% block more_links %}
+   <a href="{% url 'ShowopenSeats' %}">
+            Open Tickets</a>
+<a href="{% url 'ShowClosedSeats' %}">
+            Closed Tickets</a>
+<a href="{% url 'Showtable' %}">
+            See Other Passengers Details
+        </a>
     <a href="{% url 'edit' %}">
-            Update Details
+            Update Your Details
         </a>
         <a href="{% url 'select' %}">
             Select a Seat

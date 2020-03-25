@@ -120,29 +120,18 @@
 
              </tr>
              
-           <td><div id="seat23" class="B30" data-toggle="tooltip" data-placement="right" title="B30">B30</div></td>
-                 <td><div id="seat23" class="B29" data-toggle="tooltip" data-placement="right" title="B29">B29</div></td>
-                 <td><div id="seat23" class="B28" data-toggle="tooltip" data-placement="right" title="B28">B28</div></td>
-                 <td><div id="seat23" class="B27" data-toggle="tooltip" data-placement="right" title="B27">B27</div></td>
-                 <td><div id="seat23" class="B26" data-toggle="tooltip" data-placement="right" title="B26">B26</div></td>
-                 <td><div id="seat23" class="B25" data-toggle="tooltip" data-placement="right" title="B25">B25</div></td>
-                 <td><div id="seat23" class="B24" data-toggle="tooltip" data-placement="right" title="B24">B24</div></td>
-                 <td><div id="seat23" class="B23" data-toggle="tooltip" data-placement="right" title="B23">B23</div></td>
-                 <td><div id="seat23" class="B22" data-toggle="tooltip" data-placement="right" title="B22">B22</div></td>
-                 <td><div id="seat23" class="B21" data-toggle="tooltip" data-placement="right" title="B21">B21</div></td>
+           
 
-           </tr>
-
-           <td><div id="seat22" class="B20" data-toggle="tooltip" data-placement="right" title="B20">B20</div></td>
-                 <td><div id="seat22" class="B19" data-toggle="tooltip" data-placement="right" title="B19">B19</div></td>
-                 <td><div id="seat22" class="B18" data-toggle="tooltip" data-placement="right" title="B18">B18</div></td>
-                 <td><div id="seat22" class="B17" data-toggle="tooltip" data-placement="right" title="B17">B17</div></td>
-                 <td><div id="seat22" class="B16" data-toggle="tooltip" data-placement="right" title="B16">B16</div></td>
-                 <td><div id="seat22" class="B15" data-toggle="tooltip" data-placement="right" title="B15">B15</div></td>
-                 <td><div id="seat22" class="B14" data-toggle="tooltip" data-placement="right" title="B14">B14</div></td>
-                 <td><div id="seat22" class="B13" data-toggle="tooltip" data-placement="right" title="B13">B13</div></td>
-                 <td><div id="seat22" class="5402" data-toggle="tooltip" data-placement="right" title="B12">B12</div></td>
-                 <td><div id="seat22" class="B11" data-toggle="tooltip" data-placement="right" title="B11">B11</div></td>
+           <td><div id="seat23" class="B20" data-toggle="tooltip" data-placement="right" title="B20">B20</div></td>
+                 <td><div id="seat23" class="B19" data-toggle="tooltip" data-placement="right" title="B19">B19</div></td>
+                 <td><div id="seat23" class="B18" data-toggle="tooltip" data-placement="right" title="B18">B18</div></td>
+                 <td><div id="seat23" class="B17" data-toggle="tooltip" data-placement="right" title="B17">B17</div></td>
+                 <td><div id="seat23" class="B16" data-toggle="tooltip" data-placement="right" title="B16">B16</div></td>
+                 <td><div id="seat23" class="B15" data-toggle="tooltip" data-placement="right" title="B15">B15</div></td>
+                 <td><div id="seat23" class="B14" data-toggle="tooltip" data-placement="right" title="B14">B14</div></td>
+                 <td><div id="seat23" class="B13" data-toggle="tooltip" data-placement="right" title="B13">B13</div></td>
+                 <td><div id="seat23" class="B12" data-toggle="tooltip" data-placement="right" title="B12">B12</div></td>
+                 <td><div id="seat23" class="B11" data-toggle="tooltip" data-placement="right" title="B11">B11</div></td>
                  <td id="walk">  </td>
                  <td><div id="seat30" class="Driver" data-toggle="tooltip" data-placement="right" title="Driver">DRIVER</div></td>
 
@@ -177,7 +166,7 @@
       </div>
       <br>
       <div class="menu" style="font-family:Georgia, serif;">
-        <br></br><br></br><br></br><br></br>
+        <br></br><br></br>
             <table class="table2">
              
               <th>Seats</th>
@@ -198,18 +187,20 @@
             <tr>
 
               <tr>
-              <td><div id="seat25"></div></td>
-              <td>=> B10 - B20 Middle Seats on  Left</td>
+              <td><div id="seat2"></div></td>
+              <td>=> B10 - B20 Inner Seats on  Left</td>
             </tr>
             <tr>
               <td><div id="seat2"></div></td>
               <td>=> A10 - A20 Inner Seats on  Right</td>
             </tr>
-            <tr>
-              <tr>
-              <td><div id="seat2"></div></td>
-              <td>=> B21 - B30 Inner Seats on  Left</td>
+
             </tr>
+            <tr>
+              <td><div id="seat8"></div></td>
+              <td>=> Closed Seats(Tickets)</td>
+            </tr>
+           
             <tr>
 
              <tr>
@@ -229,62 +220,93 @@
 
 
 </div>
+  
+
+
+
+
+
+
+
   <script>
-var myNodelist = document.querySelectorAll("#seat");
+
+
+var myNodelist = document.querySelectorAll("#seat23");
 
 for(var i = 0; i < myNodelist.length; i++)
 {
+  
   var num = 2;
   var x = myNodelist[i].classList;
   var y = x.item(0);
+  
   {% if rooms %}
   {% for room in rooms %}
-  var number = {{room.no}};
+  var number = "{{room.no}}";
         if(y == number)
         {
           {% if room.vacant %}
           num--;
+          {% else %}
+          num++;
           {% endif %}
         }
   {% endfor %}
   {% endif %}
   if(num==2){
-  myNodelist[i].style.backgroundColor = "steelblue";
+  //myNodelist[i].style.backgroundColor = "steelblue";
   }
   else if(num==1){
-  myNodelist[i].style.backgroundColor = "#b8c6dd";
+  //myNodelist[i].style.backgroundColor = "#eff5f7";
   }
   else{
-  myNodelist[i].style.backgroundColor = "#eff5f7";
+  myNodelist[i].style.backgroundColor ="#ff5050" ;
   }
-  var z = myNodelist[i].classList;
 }
-var myNodelist = document.querySelectorAll("#seatS");
+
+
+
+var myNodelist = document.querySelectorAll("#seat24");
 
 for(var i = 0; i < myNodelist.length; i++)
 {
-  var num = 1;
+  
+  var num = 2;
   var x = myNodelist[i].classList;
   var y = x.item(0);
+  
   {% if rooms %}
   {% for room in rooms %}
-  var number = {{room.no}};
+  var number = "{{room.no}}";
         if(y == number)
         {
           {% if room.vacant %}
           num--;
+          {% else %}
+          num++;
           {% endif %}
         }
   {% endfor %}
   {% endif %}
-  if(num==1){
-  myNodelist[i].style.backgroundColor = "#b8c6dd";
+  if(num==2){
+  //myNodelist[i].style.backgroundColor = "steelblue";
+  }
+  else if(num==1){
+  //myNodelist[i].style.backgroundColor = "#eff5f7";
   }
   else{
-  myNodelist[i].style.backgroundColor = "#c9c6c3";
+  myNodelist[i].style.backgroundColor ="#ff5050" ;
   }
-  var z = myNodelist[i].classList;
 }
+
+
+
+
+
+
+
+
+
 </script>
 <script>
 $(document).ready(function(){
