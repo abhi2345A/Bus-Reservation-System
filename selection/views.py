@@ -104,31 +104,6 @@ def user_login(request):
         return render(request, 'login.html', {'form': form})
 
 
-def warden_login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(
-                request,
-                username=cd['username'],
-                password=cd['password'])
-            if user is not None:
-                if not user.is_warden:
-                    return HttpResponse('Invalid Login')
-                elif user.is_active:
-                    login(request, user)
-                    room_list = request.user.warden.hostel.room_set.all()
-                    context = {'rooms': room_list}
-                    return render(request, 'warden.html', context)
-                else:
-                    return HttpResponse('Disabled account')
-            else:
-                return HttpResponse('Invalid Login')
-    else:
-        form = LoginForm()
-        return render(request, 'login.html', {'form': form})
-
 
 @login_required
 def edit(request):
