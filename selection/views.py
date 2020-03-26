@@ -196,10 +196,10 @@ def logout_view(request):
 
 
 
-def BH5_Floor4(request):
+def Seat_layout(request):
     room_list = Room.objects.order_by('name')
     room_dict = {'rooms':room_list}
-    return render(request, 'BH5_Floor4.html', context=room_dict)
+    return render(request, 'Seat_layout.html', context=room_dict)
 
 
 

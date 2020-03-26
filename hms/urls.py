@@ -19,5 +19,5 @@ urlpatterns = [
     path('login/select/', views.select, name='select'),
     path('logout/', views.logout_view, name='logout'),
     path('reg_form/login/edit/', views.edit, name='update'),
-    path('BH5_Floor4/', views.BH5_Floor4, name='BH5_Floor4'),
+    path('Seat_layout/', views.Seat_layout, name='Seat_layout'),
 ]   
