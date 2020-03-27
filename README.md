@@ -1,6 +1,6 @@
 # Bus-Reservation-System
 
-It's a Django framework based web developement project. It allows users to book bus tickets which are open.<br/>
+It's a **Django framework** based web developement project. It allows users to book bus tickets which are open.<br/>
 
 ### Features
 ```
@@ -50,17 +50,17 @@ Install the project Requirements
 ```
 pip install -r requirements.txt
 ```
-Apply migrations for the database and migrate changes
+Apply **migrations** for the database and **migrate** changes
 ```
 python manage.py makemigrations selection
 python manage.py migrate
 ```
-Launch the localserver
+Launch the **localserver**
 ```
 python manage.py runserver
 ```
-Go to browser and on 127.0.0.1:8000/   home page of project will appear
-
+Go to browser and on **127.0.0.1:8000/**   home page of project will appear
+</br>
 ![Alt text](Screenshots/home.png?raw=true "home")
 
 
