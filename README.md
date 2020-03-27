@@ -59,4 +59,11 @@ Launch the localserver
 ```
 python manage.py runserver
 ```
+Go to browser and on 127.0.0.1:8000/   home page of project will appear
 
+![Alt text](Screenshots/home.png?raw=true "home")
+
+</br>
+ Click on Status to see the seat layout like this
+ ![Alt text](Screenshots/layout.png?raw=true "layout")
+ 
