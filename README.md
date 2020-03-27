@@ -27,26 +27,26 @@ It's a **Django framework** based web developement project. It allows users to b
 * Install Python and set path
 * Install pip
 ```
-Install Virtual environment
+Install **Virtual environment**
 ```
 * sudo apt install virtualenv OR
 * pip install virtualenv
 ```
-Create a Virtual Environment
+Create a **Virtual Environment**
 ```
 virtualenv venv
 ```
-Move to venv and activate virtual environment
+Move to venv and **activate virtual environment**
 ```
 cd venv/Scripts
 & .\activate
 ```
-Clone the project inside venv folder
+**Clone the project** inside venv folder
 ```
 git clone https://github.com/abhi2345A/Bus-Reservation-System.git
 cd Bus-Reservation-System
 ```
-Install the project Requirements
+Install the project **Requirements**
 ```
 pip install -r requirements.txt
 ```
@@ -68,3 +68,15 @@ Go to browser and on **127.0.0.1:8000/**   home page of project will appear
  </br>
  ![Alt text](Screenshots/layout.png?raw=true "layout")
  
+ ### Testing
+ 
+ To execute **unit tests** ( selection/tests )
+ 
+ ```
+ python manage.py test selection
+ ```
+ 
+ To execute **functional tests** ( functional_tests )
+ ```
+ python manage.py test functional_tests
+ ```
