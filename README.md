@@ -22,3 +22,41 @@ It's a Django framework based web developement project. It allows users to book 
 * Backend -  Django Framework (Python) / SQLite 
 * Testing  - Selenium / Chromedriver
 ```
+### Steps to run on the local server
+```
+* Install Python and set path
+* Install pip
+```
+Install Virtual environment
+```
+* sudo apt install virtualenv OR
+* pip install virtualenv
+```
+Create a Virtual Environment
+```
+virtualenv venv
+```
+Move to venv and activate virtual environment
+```
+cd venv/Scripts
+& .\activate
+```
+Clone the project inside venv folder
+```
+git clone https://github.com/abhi2345A/Bus-Reservation-System.git
+cd Bus-Reservation-System
+```
+Install the project Requirements
+```
+pip install -r requirements.txt
+```
+Apply migrations for the database and migrate changes
+```
+python manage.py makemigrations selection
+python manage.py migrate
+```
+Launch the localserver
+```
+python manage.py runserver
+```
+
