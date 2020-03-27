@@ -109,8 +109,8 @@ th {
 <table>
   <tr>
     <th>S.No</th>
-    <th>Room No</th>
-    <th>Room Type</th>
+    <th>Seat No</th>
+    <th>Seat Type</th>
     <th>Vacancy</th>
   </tr>
   </tr>
@@ -118,7 +118,7 @@ th {
     <tr> 
         <td> {{ forloop.counter }} </td>
         <td>{{ item.no }}</td>
-        <td>{{ item.room_type }}</td>
+        <td>{{ item.seat_type }}</td>
         <td> {% if item.vacant %} Vacant
             {% else %} Not Vacant
                     {% endif %}

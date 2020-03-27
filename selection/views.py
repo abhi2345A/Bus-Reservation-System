@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UserForm, RegistrationForm, LoginForm, SelectionForm
 from django.http import HttpResponse, Http404
-from selection.models import Passenger, Room
+from selection.models import Passenger, Seat
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -13,7 +13,7 @@ def home(request):
 
 @login_required
 def reset(request):
-    r = Room.objects.all()
+    r = Seat.objects.all()
     p = Passenger.objects.all()
     return render(request,'resetdetails.html',{'r': r,'p':p})
 
@@ -21,9 +21,9 @@ def reset(request):
 def Clear(request):
     if request.method =='GET':
         default = True
-        for room in Room.objects.all():
-            room.vacant = default
-            room.save()
+        for seat in Seat.objects.all():
+            seat.vacant = default
+            seat.save()
         for passenger in Passenger.objects.all():
             passenger.seat = None
             passenger.seat_allotted = False
@@ -40,12 +40,12 @@ def Showtable(request):
 
 @login_required
 def ShowopenSeats(request):
-    qr = Room.objects.all()
+    qr = Seat.objects.all()
     return render(request,'openseats.html',{'qr':qr})
 
 @login_required
 def ShowClosedSeats(request):
-    qr1 = Room.objects.all()
+    qr1 = Seat.objects.all()
     return render(request,'closedseats.html',{'qr1':qr1})
 
 def register(request):
@@ -131,11 +131,11 @@ def select(request):
             if request.user.passenger.seat_id:
                 request.user.passenger.seat_allotted = True
                 r_id_after = request.user.passenger.seat_id
-                seat = Room.objects.get(id=r_id_after)
+                seat = Seat.objects.get(id=r_id_after)
                 seat.vacant = False
                 seat.save()
                 try:
-                    seat = Room.objects.get(id=seat_id_old)
+                    seat = Seat.objects.get(id=seat_id_old)
                     seat.vacant = True
                     seat.save()
                 except BaseException:
@@ -143,7 +143,7 @@ def select(request):
             else:
                 request.user.passenger.seat_allotted = False
                 try:
-                    seat = Room.objects.get(id=seat_id_old)
+                    seat = Seat.objects.get(id=seat_id_old)
                     seat.vacant = True
                     seat.save()
                 except BaseException:
@@ -157,9 +157,9 @@ def select(request):
     else:
         form = SelectionForm(instance=request.user.passenger)
         passenger_gender = request.user.passenger.gender
-        x = Room.objects.none()       
-        #form.fields["room"].queryset = x
-        return render(request, 'select_room.html', {'form': form})
+        x = Seat.objects.none()       
+        #form.fields["seat"].queryset = x
+        return render(request, 'select_seat.html', {'form': form})
         #return HttpResponse('Yes')
 
 
@@ -172,9 +172,9 @@ def logout_view(request):
 
 
 def Seat_layout(request):
-    room_list = Room.objects.order_by('name')
-    room_dict = {'rooms':room_list}
-    return render(request, 'Seat_layout.html', context=room_dict)
+    seat_list = Seat.objects.order_by('name')
+    seat_dict = {'seats':seat_list}
+    return render(request, 'Seat_layout.html', context=seat_dict)
 
 
 

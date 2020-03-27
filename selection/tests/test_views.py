@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from selection.models import User, Passenger , Room
+from selection.models import User, Passenger , Seat
 import json 
 import unittest
 from django.contrib.auth import get_user_model

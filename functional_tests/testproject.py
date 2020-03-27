@@ -1,6 +1,6 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from selection.models import User, Passenger,Room
+from selection.models import User, Passenger,Seat
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.urls import reverse
 import time,os

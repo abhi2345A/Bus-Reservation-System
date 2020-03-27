@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Passenger, Room, User, Warden
+from .models import Passenger, Seat, User
 
 
 @admin.register(Passenger)
@@ -15,9 +15,9 @@ class PassengerAdmin(admin.ModelAdmin):
         'seat_allotted']
 
 
-@admin.register(Room)
-class RoomAdmin(admin.ModelAdmin):
-    list_display = ['no', 'name', 'room_type', 'vacant',]
+@admin.register(Seat)
+class SeatAdmin(admin.ModelAdmin):
+    list_display = ['no', 'name', 'seat_type', 'vacant',]
 
 
 
@@ -25,7 +25,3 @@ class RoomAdmin(admin.ModelAdmin):
 class CourseAdmin(admin.ModelAdmin):
     list_display = ['is_warden']
 
-
-@admin.register(Warden)
-class CourseAdmin(admin.ModelAdmin):
-    list_display = ['name']

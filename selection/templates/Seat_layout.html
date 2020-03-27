@@ -240,12 +240,12 @@ for(var i = 0; i < myNodelist.length; i++)
   var x = myNodelist[i].classList;
   var y = x.item(0);
   
-  {% if rooms %}
-  {% for room in rooms %}
-  var number = "{{room.no}}";
+  {% if seats %}
+  {% for seat in seats %}
+  var number = "{{seat.no}}";
         if(y == number)
         {
-          {% if room.vacant %}
+          {% if seat.vacant %}
           num--;
           {% else %}
           num++;
@@ -275,12 +275,12 @@ for(var i = 0; i < myNodelist.length; i++)
   var x = myNodelist[i].classList;
   var y = x.item(0);
   
-  {% if rooms %}
-  {% for room in rooms %}
-  var number = "{{room.no}}";
+  {% if seats %}
+  {% for seat in seats %}
+  var number = "{{seat.no}}";
         if(y == number)
         {
-          {% if room.vacant %}
+          {% if seat.vacant %}
           num--;
           {% else %}
           num++;
