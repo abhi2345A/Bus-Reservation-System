@@ -62,11 +62,15 @@ python manage.py runserver
 Go to browser and on **127.0.0.1:8000/**   home page of project will appear
 </br>
 ![Alt text](Screenshots/home.png?raw=true "home")
+</br>
+passenger's screen after login and entering details
+
+![Alt text](Screenshots/select.png?raw=true "select")
 
 
  Click on **Status** to see the seat layout like this 
  </br>
- ![Alt text](Screenshots/layout.png?raw=true "layout")
+ ![Alt text](Screenshots/layout1.png?raw=true "layout")
  
  ### Testing
  
