@@ -72,6 +72,24 @@ passenger's screen after login and entering details
  </br>
  ![Alt text](Screenshots/layout1.png?raw=true "layout")
  
+ ### Create superuser ( Admin )
+ Inside **Terminal** type - 
+ ```
+ python manage.py createsuperuser
+ ```
+ and provide
+ ```
+ * Username
+ * Email
+ * Password
+ * Confirm- Password
+ ```
+ Already created **Admin** credentials for project
+ ```
+ username -abhi
+ password -jeet
+ ```
+ 
  ### Testing
  
  To execute **unit tests** ( selection/tests )
@@ -84,3 +102,5 @@ passenger's screen after login and entering details
  ```
  python manage.py test functional_tests
  ```
+ 
+ 
