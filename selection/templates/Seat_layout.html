@@ -212,8 +212,11 @@
           </table>
           <br>
           <br>
+          {% if user.is_authenticated %}
           <button type="button" class="button-custom" style="float:left;">
           <a href="{% url 'select' %}">Reserve Seat</a></button>
+          {% endif %}
+
           </div>
         </div>
 <br>

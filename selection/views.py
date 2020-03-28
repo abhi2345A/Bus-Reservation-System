@@ -8,8 +8,10 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 
 
+
 def home(request):
     return render(request, 'home.html')
+
 
 @login_required
 def reset(request):
@@ -163,12 +165,15 @@ def select(request):
         #return HttpResponse('Yes')
 
 
+
 def logout_view(request):
     logout(request)
     return redirect('/')
 
 
 
+def index(request):
+    return render(request,'app_index.html')
 
 
 def Seat_layout(request):
