@@ -23,7 +23,7 @@ It's a **Django framework** based web developement project. It allows users to b
 * Testing  - Selenium / Chromedriver
 ```
 ### Deployed Using
- Server is configured on my system , so i need to host before you can access the project on https://52.73.20.196
+ Server is configured on my system , so i need to host before you can access the project on http://52.73.20.196
 ```
 * AWS EC2 Instance
 ```
