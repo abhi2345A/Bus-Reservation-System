@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "7e921388-2952-40bb-b400-07592e09c1a7",
+		"name": "Postman Collection of APIs for Django Project",
+		"description": "Postman Collection of APIs for Django Project i.e Bus Reservation System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "52.73.20.196/api/pdetail/",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "jeet",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "abhi",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "52.73.20.196/api/pdetail/",
+					"host": [
+						"52",
+						"73",
+						"20",
+						"196"
+					],
+					"path": [
+						"api",
+						"pdetail",
+						""
+					]
+				},
+				"description": "API To See the details of all the passengers\n\nRequires Basic Authorization - (Admin)\n\nusername - abhi\npassword - jeet"
+			},
+			"response": []
+		},
+		{
+			"name": "52.73.20.196/api/sdetail/",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "jeet",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "abhi",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "52.73.20.196/api/sdetail/",
+					"host": [
+						"52",
+						"73",
+						"20",
+						"196"
+					],
+					"path": [
+						"api",
+						"sdetail",
+						""
+					]
+				},
+				"description": "API to see status of all the Seat Tickets\n\nRequires Basic Authorization (Admin)\n\nusername - abhi\npassword - jeet"
+			},
+			"response": []
+		},
+		{
+			"name": "52.73.20.196/api/apireset/",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "jeet",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "abhi",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "52.73.20.196/api/apireset/",
+					"host": [
+						"52",
+						"73",
+						"20",
+						"196"
+					],
+					"path": [
+						"api",
+						"apireset",
+						""
+					]
+				},
+				"description": "API to reset all the seat tickets to open\n\nRequires Authorization - (Admin)\n\nusername = abhi\npassword - jeet"
+			},
+			"response": []
+		},
+		{
+			"name": "52.73.20.196/api/apiclosed/",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "jeet",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "abhi",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "52.73.20.196/api/apiclosed/",
+					"host": [
+						"52",
+						"73",
+						"20",
+						"196"
+					],
+					"path": [
+						"api",
+						"apiclosed",
+						""
+					]
+				},
+				"description": "API to see Bus Tickets that are closed \n\n\nAuthorization not needed"
+			},
+			"response": []
+		},
+		{
+			"name": "52.73.20.196/api/apiopen/",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "jeet",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "abhi",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "52.73.20.196/api/apiopen/",
+					"host": [
+						"52",
+						"73",
+						"20",
+						"196"
+					],
+					"path": [
+						"api",
+						"apiopen",
+						""
+					]
+				},
+				"description": "API to see bus tickets that are open!\n\nNo Authorization needed"
+			},
+			"response": []
+		}
+	]
+}
