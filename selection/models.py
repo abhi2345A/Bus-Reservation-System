@@ -1,9 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django import forms
 
 
 class User(AbstractUser):
     is_warden = models.BooleanField(default=False)
+
+
+
 
 
 class Passenger(models.Model):
@@ -46,6 +50,7 @@ class Seat(models.Model):
     vacant = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return str(self.no)
+        
 
 

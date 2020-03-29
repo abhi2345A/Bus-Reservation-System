@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from selection import views
+from django.conf.urls import include
+from rest_framework_jwt.views import refresh_jwt_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -19,4 +21,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('reg_form/login/edit/', views.edit, name='update'),
     path('Seat_layout/', views.Seat_layout, name='Seat_layout'),
+    path('api/',include('selection.api.urls','selection_api')),
+
 ]   

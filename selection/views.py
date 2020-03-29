@@ -6,6 +6,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.core.exceptions import ObjectDoesNotExist
+
+
 
 
 
@@ -91,8 +94,12 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    passenger = request.user.passenger
-                    return render(request, 'profile.html', {'passenger': passenger})
+                    try:
+                        passenger = request.user.passenger
+                        return render(request, 'profile.html', {'passenger': passenger})
+                    except Exception as e:
+                        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
                 else:
                     return HttpResponse('Disabled account')
             else:
