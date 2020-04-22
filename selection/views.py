@@ -186,6 +186,7 @@ def index(request):
 def Seat_layout(request):
     seat_list = Seat.objects.order_by('name')
     seat_dict = {'seats':seat_list}
+    print(seat_list)
     return render(request, 'Seat_layout.html', context=seat_dict)
 
 

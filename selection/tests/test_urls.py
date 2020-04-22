@@ -32,7 +32,7 @@ class TestUrls(SimpleTestCase):
 
 	
 
-
+'''
 class TestUrls1(unittest.TestCase):
 
 
@@ -72,7 +72,7 @@ class TestUrls1(unittest.TestCase):
 		self.delete_test_user()
 		self.assertEqual(response.status_code,200)
 
-
+'''
 	
 
 
